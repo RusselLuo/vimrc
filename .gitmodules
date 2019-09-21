@@ -1,3 +1,6 @@
 [submodule "my_plugins/vim-easymotion"]
 	path = my_plugins/vim-easymotion
 	url = git@github.com:easymotion/vim-easymotion.git
+[submodule "my_plugins/rust.vim"]
+	path = my_plugins/rust.vim
+	url = git@github.com:rust-lang/rust.vim.git
