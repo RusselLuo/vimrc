@@ -74,10 +74,3 @@ function! ale#ruby#HandleRubocopOutput(buffer, lines) abort
     return l:output
 endfunction
 
-function! ale#ruby#EscapeExecutable(executable, bundle_exec) abort
-    let l:exec_args = a:executable =~? 'bundle'
-    \   ? ' exec ' . a:bundle_exec
-    \   : ''
-
-    return ale#Escape(a:executable) . l:exec_args
-endfunction

@@ -28,11 +28,11 @@ function! go#path#GoPath(...) abort
       let s:initial_go_path = ""
     endif
 
-    call go#util#EchoInfo("GOPATH restored to ". $GOPATH)
+    echon "vim-go: " | echohl Function | echon "GOPATH restored to ". $GOPATH | echohl None
     return
   endif
 
-  call go#util#EchoInfo("GOPATH changed to ". a:1)
+  echon "vim-go: " | echohl Function | echon "GOPATH changed to ". a:1 | echohl None
   let s:initial_go_path = $GOPATH
   let $GOPATH = a:1
 endfunction

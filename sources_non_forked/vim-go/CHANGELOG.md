@@ -1,25 +1,8 @@
 ## unplanned
 
 BACKWARDS INCOMPATABILITIES:
-* Drop support for Vim 7.4. The minimu required version of Vim is now 8.0.1453.
-  [[GH-2495]](https://github.com/fatih/vim-go/pull/2495)
-  [[GH-2497]](https://github.com/fatih/vim-go/pull/2497)
-* Drop support for `gometalinter`
-  [[GH-2494]](https://github.com/fatih/vim-go/pull/2494)
-
-IMPROVEMENTS:
-* Highlight the `go` keyword in go.mod files.
-  [[GH-2473]](https://github.com/fatih/vim-go/pull/2473)
-* Use echo functions consistently.
-  [[GH-2458]](https://github.com/fatih/vim-go/pull/2458)
-* Add support for managing goroutines in debugger.
-  [[GH-2463]](https://github.com/fatih/vim-go/pull/2463)
-
-## v1.21 - (September 11, 2019)
-
-BACKWARDS INCOMPATABILITIES:
 * `g:go_metalinter_disabled` has been removed.
-  [[GH-2375]](https://github.com/fatih/vim-go/pull/2375)
+  [[GH-2375]](https://github.com/fatih/vim-go/pull/2117)
 
 IMPROVEMENTS:
 * Add a new option, `g:go_code_completion_enabled`, to control whether omnifunc
@@ -76,14 +59,6 @@ IMPROVEMENTS:
   [[GH-2453]](https://github.com/fatih/vim-go/pull/2453)
 * Reset `'more'` while installing binaries to avoid unnecessary more prompts.
   [[GH-2457]](https://github.com/fatih/vim-go/pull/2457)
-* Highlight `%w` as a format specifier (for Go 1.13).
-  [[GH-2433]](https://github.com/fatih/vim-go/pull/2433)
-* Handle changes to Go 1.13's go vet output that gometalinter isn't expecting.
-  [[GH-2475]](https://github.com/fatih/vim-go/pull/2475)
-* Make `golangci-lint` the default value for `g:go_metalinter_command`.
-  [[GH-2478]](https://github.com/fatih/vim-go/pull/2478)
-* Parse compiler errors from Go 1.13 `go vet` correctly.
-  [[GH-2485]](https://github.com/fatih/vim-go/pull/2485)
 
 BUG FIXES:
 * display info about function and function types whose parameters are
@@ -139,14 +114,7 @@ BUG FIXES:
   [[GH-2415]](https://github.com/fatih/vim-go/pull/2401)
 * Do not format the file automatically when `g:go_format_autosave` is set and
   the file being written is not the current file.
-  [[GH-2442]](https://github.com/fatih/vim-go/pull/2442)
-* Fix `go-debug-stepout` mapping.
-  [[GH-2464]](https://github.com/fatih/vim-go/pull/2464)
-* Handle paths with spaces correctly when executing jobs.
-  [[GH-2472]](https://github.com/fatih/vim-go/pull/2472)
-* Remove a space in the default value for `g:go_debug_log_output`, so that
-  Delve will start on Windows.
-  [[GH-2480]](https://github.com/fatih/vim-go/pull/2480)
+  [[GH-2442]](https://github.com/fatih/vim-go/pull/2401)
 
 ## 1.20 - (April 22, 2019)
 

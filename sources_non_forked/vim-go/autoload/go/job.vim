@@ -61,7 +61,7 @@ function! go#job#Options(args)
   let state = {
         \ 'winid': win_getid(winnr()),
         \ 'dir': getcwd(),
-        \ 'jobdir': expand("%:p:h"),
+        \ 'jobdir': fnameescape(expand("%:p:h")),
         \ 'messages': [],
         \ 'bang': 0,
         \ 'for': "_job",
@@ -72,7 +72,9 @@ function! go#job#Options(args)
         \ 'statustype' : ''
       \ }
 
-  let cbs.cwd = state.jobdir
+  if has("patch-8.0.0902") || has('nvim')
+    let cbs.cwd = state.jobdir
+  endif
 
   if has_key(a:args, 'bang')
     let state.bang = a:args.bang
@@ -193,7 +195,7 @@ function! go#job#Options(args)
     let l:cd = exists('*haslocaldir') && haslocaldir() ? 'lcd' : 'cd'
     try
       " parse the errors relative to self.jobdir
-      execute l:cd fnameescape(self.jobdir)
+      execute l:cd self.jobdir
       call go#list#ParseFormat(l:listtype, self.errorformat, out, self.for)
       let errors = go#list#Get(l:listtype)
     finally
@@ -293,6 +295,11 @@ function! go#job#Start(cmd, options)
     let l:manualcd = 1
     let dir = getcwd()
     execute l:cd fnameescape(filedir)
+  elseif !(has("patch-8.0.0902") || has('nvim'))
+    let l:manualcd = 1
+    let l:dir = l:options.cwd
+    execute l:cd fnameescape(l:dir)
+    call remove(l:options, 'cwd')
   endif
 
   if has_key(l:options, '_start')

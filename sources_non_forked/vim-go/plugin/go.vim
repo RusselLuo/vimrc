@@ -9,22 +9,30 @@ let s:cpo_save = &cpo
 set cpo&vim
 
 function! s:checkVersion() abort
+  " Not using the has('patch-7.4.2009') syntax because that wasn't added until
+  " 7.4.237, and we want to be sure this works for everyone (this is also why
+  " we're not using utils#EchoError()).
+  "
+  " Version 7.4.2009 was chosen because that's greater than what the most recent Ubuntu LTS
+  " release (16.04) uses and has a couple of features we need (e.g. execute()
+  " and :message clear).
+
   let l:unsupported = 0
   if go#config#VersionWarning() != 0
     if has('nvim')
       let l:unsupported = !has('nvim-0.3.2')
     else
-      let l:unsupported = !has('patch-8.0.1453')
+      let l:unsupported = (v:version < 704 || (v:version == 704 && !has('patch2009')))
     endif
 
     if l:unsupported == 1
       echohl Error
-      echom "vim-go requires at least Vim 8.0.1453 or Neovim 0.3.2, but you're using an older version."
+      echom "vim-go requires Vim 7.4.2009 or Neovim 0.3.2, but you're using an older version."
       echom "Please update your Vim for the best vim-go experience."
       echom "If you really want to continue you can set this to make the error go away:"
       echom "    let g:go_version_warning = 0"
       echom "Note that some features may error out or behave incorrectly."
-      echom "Please do not report bugs unless you're using at least Vim 8.0.1453 or Neovim 0.3.2."
+      echom "Please do not report bugs unless you're using Vim 7.4.2009 or newer or Neovim 0.3.2."
       echohl None
 
       " Make sure people see this.
@@ -49,6 +57,7 @@ let s:packages = {
       \ 'goimports':     ['golang.org/x/tools/cmd/goimports'],
       \ 'golint':        ['golang.org/x/lint/golint'],
       \ 'gopls':         ['golang.org/x/tools/gopls@latest', {}, {'after': function('go#lsp#Restart', [])}],
+      \ 'gometalinter':  ['github.com/alecthomas/gometalinter'],
       \ 'golangci-lint': ['github.com/golangci/golangci-lint/cmd/golangci-lint'],
       \ 'gomodifytags':  ['github.com/fatih/gomodifytags'],
       \ 'gorename':      ['golang.org/x/tools/cmd/gorename'],
@@ -81,7 +90,9 @@ function! s:GoInstallBinaries(updateBinaries, ...)
   endif
 
   if go#path#Default() == ""
-    call go#util#EchoError('$GOPATH is not set and `go env GOPATH` returns empty')
+    echohl Error
+    echomsg "vim.go: $GOPATH is not set and 'go env GOPATH' returns empty"
+    echohl None
     return
   endif
 
@@ -165,7 +176,7 @@ function! s:GoInstallBinaries(updateBinaries, ...)
           " first download the binary
           let [l:out, l:err] = go#util#Exec(l:get_cmd + [l:importPath])
           if l:err
-            call go#util#EchoError(printf('Error installing %s: %s', l:importPath, l:out))
+            echom "Error installing " . l:importPath . ": " . l:out
           endif
 
           call call(Restore_modules, [])
@@ -180,12 +191,13 @@ function! s:GoInstallBinaries(updateBinaries, ...)
           let l:get_cmd += ['-u']
         endif
 
+        " GO111MODULE must be off to install gometalinter.
         let Restore_modules = go#util#SetEnv('GO111MODULE', 'off')
 
         " first download the binary
         let [l:out, l:err] = go#util#Exec(l:get_cmd + [l:importPath])
         if l:err
-          call go#util#EchoError(printf('Error downloading %s: %s', l:importPath, l:out))
+          echom "Error downloading " . l:importPath . ": " . l:out
         endif
 
         " and then build and install it
@@ -196,7 +208,7 @@ function! s:GoInstallBinaries(updateBinaries, ...)
 
         let [l:out, l:err] = go#util#Exec(l:build_cmd)
         if l:err
-          call go#util#EchoError(printf('Error installing %s: %s', l:importPath, l:out))
+          echom "Error installing " . l:importPath . ": " . l:out
         endif
 
 
@@ -229,12 +241,12 @@ endfunction
 " commands are available.
 function! s:CheckBinaries()
   if !executable('go')
-    call go#util#EchoError('go executable not found.')
+    echohl Error | echomsg "vim-go: go executable not found." | echohl None
     return -1
   endif
 
   if !executable('git')
-    call go#util#EchoError('git executable not found.')
+    echohl Error | echomsg "vim-go: git executable not found." | echohl None
     return -1
   endif
 endfunction
