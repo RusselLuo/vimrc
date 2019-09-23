@@ -1,3 +1,7 @@
+" set color schemes
+syntax on
+color dracula
+
 " set number hybrid
 set number relativenumber
 
@@ -15,6 +19,10 @@ let g:ale_completion_enabled=1
 set completeopt=menu,menuone,preview,noselect,noinsert
 let g:ale_lint_on_text_changed = 'always'
 let g:ale_lint_on_enter = 1
+let g:ale_set_balloons = 1
+" let g:ale_cursor_detail = 1
+let g:ale_set_quickfix = 1
+let g:ale_virtualtext_cursor = 1
 
 let g:ale_linters = {
 \   'javascript': ['jshint'],
@@ -25,10 +33,13 @@ let g:ale_linters = {
 \   'c++': ['ccls']
 \}
 
+
 nmap gd :ALEGoToDefinition<cr>
 nmap gr :ALEFindReferences<cr>
 nmap gh :ALEHover<cr>
-nmap <C-o> :ALESymbolSearch 
+nmap ne :ALENext<cr>
+nmap pe :ALEPrevious<cr>
+nmap <C-F12> :ALESymbolSearch 
 
 " CRTL-P
 
