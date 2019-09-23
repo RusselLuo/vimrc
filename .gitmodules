@@ -7,3 +7,6 @@
 [submodule "my_plugins/vim-cpp-enhanced-highlight"]
 	path = my_plugins/vim-cpp-enhanced-highlight
 	url = https://github.com/octol/vim-cpp-enhanced-highlight
+[submodule "my_plugins/bundle/dracula-theme"]
+	path = my_plugins/bundle/dracula-theme
+	url = git@github.com:dracula/vim.git
