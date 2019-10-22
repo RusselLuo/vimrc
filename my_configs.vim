@@ -1,6 +1,6 @@
 " set color schemes
 syntax on
-color dracula
+color onedark 
 
 " set number hybrid
 set number relativenumber
@@ -33,9 +33,15 @@ let g:ale_linters = {
 \   'c++': ['ccls']
 \}
 
+let g:ale_fixers = {
+            \ 'rust': ['rustfmt'],
+            \}
+
 
 nmap gd :ALEGoToDefinition<cr>
 nmap gr :ALEFindReferences<cr>
+nmap gdv :ALEGoToDefinitionInVSplit<cr>
+nmap gds :ALEGoToDefinitionInSplit<cr>
 nmap gh :ALEHover<cr>
 nmap ne :ALENext<cr>
 nmap pe :ALEPrevious<cr>

@@ -10,3 +10,6 @@
 [submodule "my_plugins/dracula"]
 	path = my_plugins/dracula
 	url = https://github.com/dracula/vim.git
+[submodule "my_plugins/onedark"]
+	path = my_plugins/onedark
+	url = https://github.com/joshdick/onedark.vim.git
