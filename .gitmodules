@@ -13,3 +13,21 @@
 [submodule "my_plugins/onedark"]
 	path = my_plugins/onedark
 	url = https://github.com/joshdick/onedark.vim.git
+[submodule "my_plugins/fzf"]
+	path = my_plugins/fzf
+	url = https://github.com/junegunn/fzf.git
+[submodule "my_plugins/ale"]
+	path = my_plugins/ale
+	url = https://github.com/dense-analysis/ale.git
+[submodule "my_plugins/nerdtree"]
+	path = my_plugins/nerdtree
+	url = https://github.com/scrooloose/nerdtree.git
+[submodule "my_plugins/vim-multiple-cursors"]
+	path = my_plugins/vim-multiple-cursors
+	url = https://github.com/terryma/vim-multiple-cursors.git
+[submodule "my_plugins/vim-grepper"]
+	path = my_plugins/vim-grepper
+	url = https://github.com/mhinz/vim-grepper.git
+[submodule "my_plugins/vim-clang-format"]
+	path = my_plugins/vim-clang-format
+	url = https://github.com/rhysd/vim-clang-format.git
