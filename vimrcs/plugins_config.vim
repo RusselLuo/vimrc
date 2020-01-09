@@ -177,7 +177,8 @@ let g:ale_linters = {
 \   'go': ['go', 'golint', 'errcheck'],
 \   'vim': ['vint'],
 \   'rust':['rls','cargo'],
-\   'c++': ['ccls']
+\   'cpp': ['ccls'],
+\   'c': ['ccls']
 \}
 
 let g:ale_fixers = {

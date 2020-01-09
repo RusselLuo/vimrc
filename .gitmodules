@@ -31,3 +31,6 @@
 [submodule "my_plugins/vim-clang-format"]
 	path = my_plugins/vim-clang-format
 	url = https://github.com/rhysd/vim-clang-format.git
+[submodule "my_plugins/echodoc"]
+	path = my_plugins/echodoc
+	url = https://github.com/Shougo/echodoc.vim.git
