@@ -150,12 +150,6 @@ nnoremap <silent> <leader>z :Goyo<cr>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Syntastic (syntax checker) / ALE
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:ale_linters = {
-\   'javascript': ['jshint'],
-\   'python': ['flake8'],
-\   'go': ['go', 'golint', 'errcheck']
-\}
-
 nmap <silent> <leader>a <Plug>(ale_next_wrap)
 
 " Disabling highlighting
@@ -173,7 +167,7 @@ let g:ale_virtualtext_cursor = 1
 
 let g:ale_linters = {
 \   'javascript': ['jshint'],
-\   'python': ['flake8'],
+\   'python': ['pyls'],
 \   'go': ['go', 'golint', 'errcheck'],
 \   'vim': ['vint'],
 \   'rust':['rls','cargo'],
