@@ -34,3 +34,6 @@
 [submodule "my_plugins/echodoc"]
 	path = my_plugins/echodoc
 	url = https://github.com/Shougo/echodoc.vim.git
+[submodule "my_plugins/indentLine"]
+	path = my_plugins/indentLine
+	url = git@github.com:Yggdroot/indentLine.git
