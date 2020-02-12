@@ -54,6 +54,10 @@ command W w !sudo tee % > /dev/null
 " set number hybrid
 set number relativenumber
 
+" set line highlight
+set cursorline
+set cursorcolumn
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => VIM user interface
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
