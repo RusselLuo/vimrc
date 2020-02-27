@@ -162,6 +162,7 @@ let g:ale_linters = {
 \   'c': ['ccls']
 \}
 
+let g:ale_rust_cargo_use_clippy = executable('cargo-clippy')
 let g:ale_fixers = {
             \ 'rust': ['rustfmt'],
             \}
@@ -203,3 +204,8 @@ let g:cpp_class_decl_highlight = 1
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:vim_markdown_folding_disabled = 1
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Leetcode 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:leetcode_browser='chrome'
+let g:leetcode_solution_filetype = 'rust'
