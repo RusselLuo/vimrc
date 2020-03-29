@@ -163,6 +163,8 @@ let g:ale_linters = {
 \}
 
 let g:ale_rust_cargo_use_clippy = executable('cargo-clippy')
+let g:ale_rust_rustfmt_options = "--edition 2018"
+let g:ale_rust_rustc_options = "--edition 2018"
 let g:ale_fixers = {
             \ 'rust': ['rustfmt'],
             \}

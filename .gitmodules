@@ -34,9 +34,6 @@
 [submodule "my_plugins/echodoc"]
 	path = my_plugins/echodoc
 	url = https://github.com/Shougo/echodoc.vim.git
-[submodule "my_plugins/indentLine"]
-	path = my_plugins/indentLine
-	url = git@github.com:Yggdroot/indentLine.git
 [submodule "my_plugins/leetcode"]
 	path = my_plugins/leetcode
 	url = https://github.com/ianding1/leetcode.vim.git
@@ -46,3 +43,6 @@
 [submodule "my_plugins/vim-maktaba"]
 	path = my_plugins/vim-maktaba
 	url = https://github.com/google/vim-maktaba.git
+[submodule "my_plugins/indentLine"]
+	path = my_plugins/indentLine
+	url = https://github.com/Yggdroot/indentLine.git
