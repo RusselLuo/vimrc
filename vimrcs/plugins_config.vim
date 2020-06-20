@@ -107,7 +107,7 @@ let g:lightline = {
       \ 'colorscheme': 'powerline',
       \ 'active': {
       \   'left': [ ['mode', 'paste'],
-      \             ['fugitive', 'readonly', 'filename', 'modified'] ],
+      \             ['fugitive', 'readonly', 'absolutepath', 'modified'] ],
       \   'right': [ [ 'lineinfo' ], ['percent'] ]
       \ },
       \ 'component': {
@@ -163,6 +163,7 @@ let g:ale_linters = {
 \}
 
 let g:ale_rust_cargo_use_clippy = executable('cargo-clippy')
+let g:ale_rust_rls_executable='rust-analyzer'
 let g:ale_rust_rustfmt_options = "--edition 2018"
 let g:ale_rust_rustc_options = "--edition 2018"
 let g:ale_fixers = {
